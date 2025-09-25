@@ -38,13 +38,20 @@ const Signup = () => {
 
     const saveuser = (e) => {
         e.preventDefault();
-        const user = {firstName, lastName, email, phoneNumber, departmentId, positionId, officeId, salary, age, password, role: "USER"};
+        let role = "USER";
+        if (departmentId === "101") {  // ensure departmentId matches the value type you use
+            role = "ADMIN";
+        }
+        const user = {firstName, lastName, email, phoneNumber, departmentId, positionId, officeId, salary, age, password, role};
         UserService.saveUser(user)
             .then(response => {
                 if (response && response.data && response.data.message) {
-                setMessage(response.data.message);  // e.g., "User created"
+                setMessage(response.data.message);
+                navigate(`/login`)
+                  // e.g., "User created"
             } else {
                 setMessage("Signup successful");
+                navigate(`/login`)
             }
         })
         .catch(error => {

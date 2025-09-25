@@ -17,8 +17,11 @@ const Login = () => {
     UserService.checkUser(user)
       .then(response => {
         setMessage(response.data.message); // "Login successful"
+        localStorage.setItem("userdata", JSON.stringify(response.data.user_data));
+            console.log("Saved user:", JSON.parse(localStorage.getItem("userdata")));
+
         if (response.data.role === "ADMIN") {
-          navigate("/admin-dashboard");
+          navigate("/admin/dashboard");
         } else {
           navigate("/home");
         }
