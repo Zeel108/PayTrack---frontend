@@ -1,15 +1,14 @@
 import '../Styles/CSS/Logincss.css';
-import { useNavigate } from "react-router-dom";
-import { useState } from 'react';
+import { useNavigate, Link } from "react-router-dom";
+import { use, useState } from 'react';
+import UserService from '../services/UserService';
 
 const Signup = () => {
 
     const department = [
         {id:101, name:"Administration"}, 
         {id:102, name:"Developer"},
-        {id:103, name:"Analyst"} 
-    ]
-
+        {id:103, name:"Analyst"} ]
     const position = {
         101: [{id:1, name:"System Administrator"},
               {id:2, name:"HR Manager"},
@@ -20,23 +19,40 @@ const Signup = () => {
               {id:7, name:"Software Tester"},
               {id:8, name:"Software Engineer"},
               {id:9, name:"Frontend Developer"},
-              {id:10, name:"Backend Developer"}]
-    }
+              {id:10, name:"Backend Developer"}] }
 
     const [departmentId, setDepartmentId] = useState("");
-    const [positionId, setPositionId] = useState([]);
+    const [positionList, setPositionList] = useState([]);
+    const [positionId, setPositionId] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [age, setAge] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [salary, setSalary] = useState("");
+    const [officeId, setOfficeId] = useState("");
+    
+    const saveuser = (e) => {
+        e.preventDefault();
+        const user = {firstName, lastName, email, phoneNumber, departmentId, positionId, officeId, salary, age, password};
+        UserService.saveUser(user)
+            .then(response => {
+                console.log("user is created", response.data);
+                navigate(`/login`);
+            })
+            .catch(error => {
+                console.log("somithing went wrong in saving user at backend", error);
+            })
+    }
 
     const handleDepartmentChange = (e) => {
         const selectedId = e.target.value;
             setDepartmentId(selectedId);
-            setPositionId(position[selectedId] || []);
+            setPositionList(position[selectedId] || []);
     };
 
     const navigate = useNavigate();
-
-    const save = () => {
-        navigate(`/users`)
-    }
 
     return (
         <div className="login-container signup-container">
@@ -46,22 +62,35 @@ const Signup = () => {
                     <div className="form-row">
                         <div className="form-group">
                             <label>First Name:</label>
-                            <input type="text" placeholder="Enter Your First Name" required />
+                            <input type="text" placeholder="Enter Your First Name" 
+                                value={firstName}
+                                onChange={(e) => setFirstName(e.target.value)}
+                            required />
                         </div>
                         <div className="form-group">
                             <label>Last Name:</label>
-                            <input type="text" placeholder="Enter Last Name" required />
+                            <input type="text" placeholder="Enter Last Name"
+                                value={lastName}
+                                onChange={(e) => setLastName(e.target.value)}
+                            required />
                         </div>
                     </div>
 
                     <div className="form-row">
                         <div className="form-group">
-                            <label>Age:</label>
-                            <input type="number" placeholder="Enter Your Age" required />
+                            <label>Email:</label>
+                            <input type="email" placeholder="Enter Email" 
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            required />
                         </div>
+                        
                         <div className="form-group">
                             <label>Phone Number:</label>
-                            <input type="number" placeholder="Enter Phone Number" required />
+                            <input type="number" placeholder="Enter Phone Number" 
+                                value={phoneNumber}
+                                onChange={(e) => setPhoneNumber(e.target.value)}
+                            required />
                         </div>
                     </div>
 
@@ -70,8 +99,7 @@ const Signup = () => {
                             <label>Department:</label>
                             <select className="form-control"
                                 value={departmentId}
-                                onChange={handleDepartmentChange}                                
-                                defaultValue={"2"} >
+                                onChange={handleDepartmentChange}   >
                                 <option value="">select Department</option>
                                 {department.map((dept) => (
                                     <option key={dept.id} value={dept.id} >
@@ -83,9 +111,11 @@ const Signup = () => {
 
                         <div className="form-group">
                             <label>Position:</label>
-                            <select className="form-control">
+                            <select className="form-control" 
+                                value={positionId}
+                                onChange={(e) => setPositionId(e.target.value)}>
                                 <option value="">select position</option>
-                                {positionId.map((posi) => (
+                                {positionList.map((posi) => (
                                     <option key={posi.id} value={posi.id}>
                                         {posi.name}
                                     </option>
@@ -97,31 +127,43 @@ const Signup = () => {
                     <div className="form-row">
                         <div className="form-group">
                             <label>Office ID:</label>
-                            <input type="number" placeholder="Enter Office ID" required />
+                            <input type="number" placeholder="Enter Office ID" 
+                                value={officeId}
+                                onChange={(e) => setOfficeId(e.target.value)}
+                            required />
                         </div>
                         <div className="form-group">
                             <label>Salary:</label>
-                            <input type="number" placeholder="Enter Salary" required />
+                            <input type="number" placeholder="Enter Salary" 
+                                value={salary}
+                                onChange={(e) => setSalary(e.target.value)}
+                            required />
                         </div>
                     </div>
 
                     <div className="form-row">
                         <div className="form-group">
-                            <label>Email:</label>
-                            <input type="email" placeholder="Enter Email" required />
+                            <label>Age:</label>
+                            <input type="number" placeholder="Enter Your Age" 
+                                value={age}
+                                onChange={(e) => setAge(e.target.value)}
+                            required />
                         </div>
                         <div className="form-group">
                             <label>Password:</label>
-                            <input type="password" placeholder="Enter Password" required />
+                            <input type="password" placeholder="Enter Password" 
+                                value={password} 
+                                onChange={(e) => setPassword(e.target.value)}    
+                            required />
                         </div>
                     </div>
-
-                    <button type="submit" className="submit-btn">Submit</button>
+                    <div style={{textAlign:"center", display:"flex",justifyContent:"center"}}>
+                    <button type="submit" className="submit-btn" onClick={(e) => saveuser(e)} style={{maxWidth:"200px"}}>Signup</button>
+                                </div>
                 </form>
 
-                <div className="bottom-links">
-                    <a href="#">Signup</a>
-                    <a href="#">Forgot Password?</a>
+                <div className="bottom-links" style={{gap:"47px", display:"flex",justifyContent:"center"}}>
+                    <Link to="/login">Already Developer ?</Link>
                 </div>
             </div>
         </div>

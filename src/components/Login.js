@@ -1,5 +1,5 @@
 import '../Styles/CSS/Logincss.css';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Signup from './Signup';
 import UpdatePassword from './UpdatePassword';
 
@@ -11,13 +11,7 @@ const Login = () => {
     const save = () => {
         navigate(`/users`)
     }
-    const Gotosignup = () => {
-        navigate(`/signup`)
-    }
-    const GotoForgetpass = () => {
-        navigate(`/forgetpass`);
-    }
-
+    
     return (
     <div className="login-container">
       <h1 className="app-name">PayTrack</h1>
@@ -33,10 +27,10 @@ const Login = () => {
           </div>
           <button type="submit" className="login-btn">Login</button>
         </form>
-        <div className="bottom-links">
-          <a onClick={Gotosignup}>Signup</a>
-          <a onClick={GotoForgetpass}>Forgot Password?</a>
-        </div>
+        <div className="bottom-links" style={{gap:"12px", display:"flex",justifyContent:"center"}}>
+                    <Link to="/signup">New to company?</Link>
+                    <Link to="/forgetpass">Forget Password?</Link>
+                </div>
       </div>
     </div>
   );
