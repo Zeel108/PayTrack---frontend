@@ -1,7 +1,33 @@
+import { NavLink } from "react-router-dom";
+
+
 const NavBar = () => {
     return ( 
         <div>
-            NavBar
+            <nav className="navbar">
+      <ul className="nav-links">
+        <li>
+          <NavLink to="/home" end className={({ isActive }) => (isActive ? "active" : "")}>
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
+            Add Expense
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/expense" className={({ isActive }) => (isActive ? "active" : "")}>
+            View Expense
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/profile" className={({ isActive }) => (isActive ? "active" : "")}>
+            Profile
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
         </div>
      );
 }

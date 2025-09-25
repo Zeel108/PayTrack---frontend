@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react"; 
+import { useEffect, useState } from "react";
 import UserService from "../services/UserService";
+import '../Styles/CSS/Home.css';
 
-const Home = () => {  
+const Home = () => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -14,20 +15,11 @@ const Home = () => {
             })
     }, []);
 
-    return ( 
-        <div>
-            <h1>NotesList</h1>
-            {                                                                                                     
-                users.map(user => (                 
-                    <div className="table">                               
-                        <p>{user.id}</p>
-                        <p>{user.name}</p>
-                        <p>{user.email}</p>
-                    </div>
-                ))
-            }
-        </div>
-     );
+    return (
+        <div style={{textAlign:"center"}}>
+         
+    </div>
+    );
 }
- 
+
 export default Home;
