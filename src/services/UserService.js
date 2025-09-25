@@ -5,7 +5,11 @@ const getusers = () => {
 }
 
 const saveUser = data => {
-    return httpClient.post("/saveuser", data);
+    return httpClient.post("/auth/signup", data);
 }
 
-export default {getusers, saveUser};
+const checkUser = data => {
+    return httpClient.post("/auth/login", data);
+}
+
+export default {getusers, saveUser, checkUser};

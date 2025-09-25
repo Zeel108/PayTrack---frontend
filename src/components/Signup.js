@@ -1,10 +1,12 @@
 import '../Styles/CSS/Logincss.css';
 import { useNavigate, Link } from "react-router-dom";
-import { use, useState } from 'react';
+import { useState } from 'react';
 import UserService from '../services/UserService';
 
 const Signup = () => {
 
+    
+    const navigate = useNavigate();
     const department = [
         {id:101, name:"Administration"}, 
         {id:102, name:"Developer"},
@@ -32,17 +34,29 @@ const Signup = () => {
     const [phoneNumber, setPhoneNumber] = useState("");
     const [salary, setSalary] = useState("");
     const [officeId, setOfficeId] = useState("");
-    
+    const [message, setMessage] = useState("");
+
     const saveuser = (e) => {
         e.preventDefault();
-        const user = {firstName, lastName, email, phoneNumber, departmentId, positionId, officeId, salary, age, password};
+        const user = {firstName, lastName, email, phoneNumber, departmentId, positionId, officeId, salary, age, password, role: "USER"};
         UserService.saveUser(user)
             .then(response => {
-                console.log("user is created", response.data);
-                navigate(`/login`);
-            })
-            .catch(error => {
-                console.log("somithing went wrong in saving user at backend", error);
+                if (response && response.data && response.data.message) {
+                setMessage(response.data.message);  // e.g., "User created"
+            } else {
+                setMessage("Signup successful");
+            }
+        })
+        .catch(error => {
+            console.log("Signup error:", error);
+
+            if (error.response && error.response.data && error.response.data.detail) {
+                setMessage(error.response.data.detail);  // e.g., "Email already registered"
+            } else if (error.message) {
+                setMessage(error.message);
+            } else {
+                setMessage("Something went wrong");
+            }
             })
     }
 
@@ -52,7 +66,6 @@ const Signup = () => {
             setPositionList(position[selectedId] || []);
     };
 
-    const navigate = useNavigate();
 
     return (
         <div className="login-container signup-container">
@@ -161,6 +174,7 @@ const Signup = () => {
                     <button type="submit" className="submit-btn" onClick={(e) => saveuser(e)} style={{maxWidth:"200px"}}>Signup</button>
                                 </div>
                 </form>
+                {message && <p style={{color: "red"}}>{message}</p>}
 
                 <div className="bottom-links" style={{gap:"47px", display:"flex",justifyContent:"center"}}>
                     <Link to="/login">Already Developer ?</Link>
