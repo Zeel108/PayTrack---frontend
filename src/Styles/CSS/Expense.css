@@ -1,12 +1,12 @@
 :root {
-  --primaryl-bg: linear-gradient(135deg, #8E618D, #A376A2, #FFE3FE);
-  --cardl-bg: #E4D5D5;
-  --textl-color: #3A1D32;
-  --textl-logo: #4F2C49;
-  --buttonl-bg: #A376A2;
-  --buttonl-hover: #6B3F69;
-  --linkl-color: #8D5F8C;
-  --loginl-body: #E4D5D5;
+  --primary-bg: #E4D5D5;
+  --card-bg: #F4EBEB;
+  --text-color: #3A1D32;
+  --text-logo: #4F2C49;
+  --button-bg: #A376A2;
+  --button-hover: #6B3F69;
+  --link-color: #8D5F8C;
+  --login-body: white;
 }
 
 
@@ -14,67 +14,68 @@ body, html {
   height: 100%;
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: var(--primaryl-bg);
+  background-color: var(--primary-bg);
 }
 
-.login-container {
-  height: 100vh;
+.box-container {
+  height: 140vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--primaryl-bg);
-  color: var(--textl-color);
+  background: var(--primary-bg);
+  color: var(--text-color);
 }
 
 .app-name {
-  color: var(--textl-logo);
+  color: var(--text-logo);
   margin-bottom: 20px;
   font-size: 2rem;
   font-weight: bold;
 }
 
-.login-card {
-  background: var(--loginl-body);
+.box-card {
+  background: var(--login-body);
   padding: 25px 30px;
   border-radius: 10px;
-  width: 300px;
+  width: 800px;
   box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 25px;
   display: flex;
   flex-direction: column;
 }
 
 .form-group label {
-  margin-bottom: 5px;
-  font-size: 14px;
+  margin-bottom: 15px;
+  font-size: 20px;
 }
 
 .form-group input {
   padding: 10px;
-  border: 1px solid #ccc;
+  background-color: var(--card-bg);
+  border: 1px solid var(--text-color);
   border-radius: 6px;
 }
 
-.login-btn {
+.submit-btn {
 
   margin-top: 20px;
   width: 100%;
   padding: 10px;
-  background: var(--buttonl-bg);
+  background: var(--button-bg);
   border: none;
-  color: var(--textl-color);
+  color: var(--text-color);
   font-weight: bold;
   border-radius: 6px;
   cursor: pointer;
 }
 
-.login-btn:hover {
-  background: var(--textl-color);
-  color: var(--buttonl-bg);
+.submit-btn:hover {
+  background: var(--text-color);
+  color: var(--button-bg);
 }
 
 .bottom-links {
@@ -86,12 +87,12 @@ body, html {
 .bottom-links a {
   font-size: 14px;
   text-decoration: none;
-  color: var(--textl-color);
+  color: var(--text-color);
 }
 
 .bottom-links a:hover {
   text-decoration: underline;
-  color: var(--buttonl-bg);
+  color: var(--button-bg);
 }
 
 /* signup css */
@@ -102,8 +103,8 @@ body, html {
 
 
 .signup-card {
-  color: var(--textl-color);
-  background: var(--loginl-body);
+  color: var(--text-color);
+  background: var(--login-body);
   border-radius: 10px;
   width: 560px;
   box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
@@ -113,7 +114,7 @@ body, html {
   max-width: 600px;
   margin: 0 auto;
   padding: 5px;
-  background: var(--loginl-body);
+  background: var(--login-body);
   border-radius: 12px;
 }
 
@@ -132,7 +133,7 @@ body, html {
 .form-group label {
   font-weight: 600;
   margin-bottom: 6px;
-  color: var(--textl-color);
+  color: var(--text-color);
 }
 
 .form-group input {
@@ -145,8 +146,8 @@ body, html {
 .submit-btn {
   width: 100%;
   padding: 12px;
-  background: var(--buttonl-bg);
-  color: var(--textl-color);
+  background: var(--button-bg);
+  color: var(--text-color);
   font-size: 16px;
   font-weight: 600;
   border: none;
@@ -157,6 +158,6 @@ body, html {
 }
 
 .submit-btn:hover {
-  background: var(--textl-color);
-  color: var(--buttonl-bg);
+  background: var(--text-color);
+  color: var(--button-bg);
 }

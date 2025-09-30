@@ -1,3 +1,4 @@
+import '../Styles/CSS/Navbar.css'
 import { NavLink } from "react-router-dom";
 
 const AdminBar = () => {
@@ -8,6 +9,16 @@ const AdminBar = () => {
         <li>
           <NavLink to="/admin/dashboard" end className={({ isActive }) => (isActive ? "active" : "")}>
             Dashboard
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/admin/addexpense" end className={({ isActive }) => (isActive ? "active" : "")}>
+            Add Expense
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/admin/viewexpense" end className={({ isActive }) => (isActive ? "active" : "")}>
+            View Expense
           </NavLink>
         </li>
         <li>

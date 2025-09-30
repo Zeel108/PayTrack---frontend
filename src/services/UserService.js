@@ -1,7 +1,7 @@
 import httpClient from "../http-common"
 
 const getusers = () => {
-    return httpClient.get("/users");
+    return httpClient.post("/users");
 }
 
 const saveUser = data => {

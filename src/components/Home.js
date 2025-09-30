@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import UserService from "../services/UserService";
-import '../Styles/CSS/Home.css';
+import '../Styles/CSS/Expense.css';
+import { Link } from "react-router-dom";
 
 const Home = () => {
     const [users, setUsers] = useState([]);
@@ -15,11 +16,11 @@ const Home = () => {
             })
     }, []);
 
-    return (
-        <div style={{textAlign:"center"}}>
-         
+return (
+    <div className="box-container" style={{marginTop:"-200px"}}>
+      Hello
     </div>
-    );
-}
+  );
+};
 
 export default Home;

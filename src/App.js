@@ -16,6 +16,8 @@ import ListUsers from './components/ListUsers.js'
 import AdminDashboard from './components/AdminDashboard.js'
 import SalaryPay from './components/SalaryPay.js'
 import AddUser from './components/AddUser.js'
+import ViewExpense from './components/ViewExpense.js';
+import ExpenseDetail from './components/ExpenseDetails.js';
 
 function App() {
 
@@ -41,6 +43,8 @@ function App() {
                 <Route path='/salarypay' element={<SalaryPay />} />
                 <Route path='/profile' element={<Profile />} />
                 <Route path='/adduser' element={<AddUser />} />
+                <Route path='/addexpense' element={<Expense />} />
+                <Route path='/viewexpense' element={<ViewExpense />} />
                 
               </Routes>
             </>
@@ -56,7 +60,10 @@ function App() {
               <Routes>
                 <Route path='/home' element={<Home />} />
                 <Route path='/profile' element={<Profile />} />
-                <Route path='/expense' element={<Expense />} />
+                <Route path='/addexpense' element={<Expense />} />
+                <Route path='/viewexpense' element={<ViewExpense />} />
+                <Route path='/expensedetail' element={<ExpenseDetail />} />
+                <Route path='/adduser' element={<AddUser />} />
               </Routes>
             </>
           }

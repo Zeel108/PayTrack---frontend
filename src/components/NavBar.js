@@ -1,3 +1,4 @@
+import '../Styles/CSS/Navbar.css'
 import { NavLink } from "react-router-dom";
 
 
@@ -12,12 +13,12 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
+          <NavLink to="/addexpense" className={({ isActive }) => (isActive ? "active" : "")}>
             Add Expense
           </NavLink>
         </li>
         <li>
-          <NavLink to="/expense" className={({ isActive }) => (isActive ? "active" : "")}>
+          <NavLink to="/viewexpense" className={({ isActive }) => (isActive ? "active" : "")}>
             View Expense
           </NavLink>
         </li>
