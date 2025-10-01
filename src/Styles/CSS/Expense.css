@@ -7,6 +7,8 @@
   --button-hover: #6B3F69;
   --link-color: #8D5F8C;
   --login-body: white;
+  --box-shadow: rgba(0,0,0,0.2);
+  --border: #ccc;
 }
 
 
@@ -39,7 +41,7 @@ body, html {
   padding: 25px 30px;
   border-radius: 10px;
   width: 800px;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0px 4px 10px var(--box-shadow);
 }
 
 .form-group {
@@ -107,7 +109,7 @@ body, html {
   background: var(--login-body);
   border-radius: 10px;
   width: 560px;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0px 4px 10px var(--box-shadow);
 }
 
 .employee-form {
@@ -138,7 +140,7 @@ body, html {
 
 .form-group input {
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border);
   border-radius: 6px;
   font-size: 14px;
 }
@@ -161,3 +163,67 @@ body, html {
   background: var(--text-color);
   color: var(--button-bg);
 }
+
+/* List user page  */
+
+.list-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+}
+
+.list-card {
+  background: var(--login-body);
+  padding: 25px 30px;
+  border-radius: 10px;
+  width: 1400px;
+  box-shadow: 0px 4px 10px var(--box-shadow);
+}
+
+/* Table background and borders */
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  text-decoration: var(--text-color);
+}
+
+/* Header */
+#myTable thead {
+  background-color: var(--button-bg);
+  color: var(--login-body);
+  text-align: left;
+}
+
+/* Rows */
+#myTable tbody tr:nth-child(even) {
+  background-color: var(--card-bg);
+}
+#myTable tbody tr:hover {
+  background-color: var(--primary-bg);
+}
+
+.table-link {
+  color: var(--text-color);
+  margin: 0;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.table-link:hover {
+  border-radius: 12px;
+  background-color: var(--card-bg); /* light blue box */
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+/* Cells */
+#myTable th, #myTable td {
+  
+  padding: 12px;
+  border: 1px solid var(--border);
+}
+
